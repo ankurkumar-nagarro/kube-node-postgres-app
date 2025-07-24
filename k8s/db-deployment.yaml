@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:14
+        env:
+        - name: POSTGRES_DB
+          value: recordsdb
+        - name: POSTGRES_USER
+          valueFrom:
+            configMapKeyRef:
+              name: api-config
+              key: DB_USER
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DB_PASSWORD
+        volumeMounts:
+        - name: db-storage
+          mountPath: /var/lib/postgresql/data
+        - name: db-init
+          mountPath: /docker-entrypoint-initdb.d/
+      volumes:
+      - name: db-storage
+        persistentVolumeClaim:
+          claimName: db-pvc
+      - name: db-init
+        configMap:
+          name: db-init-script
+          items:
+          - key: init.sql
+            path: init.sql
