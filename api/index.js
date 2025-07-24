@@ -7,7 +7,10 @@ const PORT = process.env.PORT || 3000;
 
 app.get('/records', async (req, res) => {
   try {
+    console.log('GET /records called=========');
     const { rows } = await db.query('SELECT * FROM records');
+    
+    console.log(rows,'db called============');
     res.json(rows);
   } catch (err) {
     console.error(err);
