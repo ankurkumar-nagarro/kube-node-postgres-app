@@ -8,7 +8,7 @@ spec:
   - host: api.local
     http:
       paths:
-      - path: /
+      - path: /records
         pathType: Prefix
         backend:
           service:
