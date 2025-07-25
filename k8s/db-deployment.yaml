@@ -29,10 +29,10 @@ spec:
               name: db-secret
               key: DB_PASSWORD
         - name: PGDATA
-          value: /var/lib/postgresql/data/pgdata/data
+          value: /var/lib/postgresql/volume/pgdata
         volumeMounts:
         - name: db-storage
-          mountPath: /var/lib/postgresql/data/pgdata/data
+          mountPath: /var/lib/postgresql/volume
         - name: db-init
           mountPath: /docker-entrypoint-initdb.d/
       volumes:
