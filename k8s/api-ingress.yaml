@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: gce
   rules:
-    http:
+  - http:
       paths:
       - path: /records
         pathType: Prefix
