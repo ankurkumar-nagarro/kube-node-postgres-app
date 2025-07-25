@@ -4,5 +4,6 @@ metadata:
   name: api-config
 data:
   DB_HOST: db-service
+  DB_PORT: "5432"
   DB_USER: postgres
   DB_NAME: recordsdb
