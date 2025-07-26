@@ -5,7 +5,8 @@ metadata:
 spec:
   ingressClassName: gce
   rules:
-  - http:
+  - host: myapi.example.com
+    http:
       paths:
       - path: /records
         pathType: Prefix
