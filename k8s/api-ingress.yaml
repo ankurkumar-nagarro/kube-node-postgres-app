@@ -3,17 +3,22 @@ kind: Ingress
 metadata:
   name: api-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: my-static-ip
-    cloud.google.com/neg: '{"ingress": true}'
+    kubernetes.io/ingress.class: "gce"
 spec:
-  ingressClassName: gce
   rules:
-    - http:
-        paths:
-          - path: /records
-            pathType: Prefix
-            backend:
-              service:
-                name: api-service
-                port:
-                  number: 80
+  - http:
+      paths:
+      - path: /records
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 80
+      - path: /healthz
+        pathType: Prefix
+        backend:
+          service:
+            name: api-service
+            port:
+              number: 80

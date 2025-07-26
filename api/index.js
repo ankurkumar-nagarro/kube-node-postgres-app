@@ -18,6 +18,11 @@ app.get('/records', async (req, res) => {
   }
 });
 
+app.get('/healthz', (req, res) => {
+  res.send('OK');
+});
+
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`API running on port ${PORT}`);
 });
