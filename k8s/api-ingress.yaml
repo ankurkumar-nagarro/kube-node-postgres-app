@@ -3,6 +3,7 @@ kind: Ingress
 metadata:
   name: api-ingress
   annotations:
+    kubernetes.io/ingress.global-static-ip-name: my-static-ip
     cloud.google.com/neg: '{"ingress": true}'
 spec:
   ingressClassName: gce
