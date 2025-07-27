@@ -4,11 +4,11 @@ metadata:
   name: api-service
   annotations:
     cloud.google.com/neg: '{"ingress": true}'
+    beta.cloud.google.com/backend-config: '{"default": "api-backendconfig"}'
 spec:
-  type: ClusterIP
   selector:
     app: api
   ports:
-    - protocol: TCP
-      port: 80
+    - port: 80
       targetPort: 3000
+  type: ClusterIP
