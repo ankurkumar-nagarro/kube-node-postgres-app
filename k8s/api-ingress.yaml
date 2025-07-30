@@ -9,13 +9,6 @@ spec:
   rules:
   - http:
       paths:
-      - path: /healthz
-        pathType: Prefix
-        backend:
-          service:
-            name: api-service
-            port:
-              number: 3000
       - path: /records
         pathType: Prefix
         backend:
