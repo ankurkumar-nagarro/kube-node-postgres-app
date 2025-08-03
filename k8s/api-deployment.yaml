@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ankurr0602/kube-api:v1
+        image: ankurr0602/kube-api:v2
         ports:
         - containerPort: 3000
         resources:
