@@ -15,6 +15,18 @@ app.get('/records', async (req, res) => {
   }
 });
 
+app.get('/records/:id', async (req, res) => {
+  try {
+    const userId = req.params.id;
+    const { rows } = await db.query('SELECT * FROM records WHERE id = $1', [userId]);
+    if (rows.length === 0) return res.status(404).json({ error: 'User not found' });
+    res.json(rows[0]);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
 app.get('/healthz', (req, res) => {
   res.send('OK');
 });
