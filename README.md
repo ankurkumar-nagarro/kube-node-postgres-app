@@ -8,4 +8,4 @@ https://github.com/ankurkumar-nagarro/kube-node-postgres-app
 https://hub.docker.com/r/ankurr0602/kube-api
 
 # URL for Service API tier to view the records from backend tier(Cluster will be deleted, below url might not work)
-http://34.13.117.22/records
+http://34.36.19.7/records
